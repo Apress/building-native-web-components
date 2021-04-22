@@ -1,0 +1,24 @@
+{
+  "name": "apress-book-web-components-note-list",
+  "version": "1.0.1",
+  "description": "Note list Component",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "start": "serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosrojaso/apress-book-web-components.git"
+  },
+  "author": "Carlos Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosrojaso/apress-book-web-components/issues"
+  },
+  "homepage": "https://github.com/carlosrojaso/apress-book-web-components#readme",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}

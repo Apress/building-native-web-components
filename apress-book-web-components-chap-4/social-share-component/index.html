@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - social-share-component</title>
+</head>
+<body>
+<div id="parent">
+    <social-share-component socialNetwork="tw" user="carlosrojas_o"></social-share-component>
+    <social-share-component socialNetwork="fb" user="carlosrojas_o"></social-share-component>
+</div>
+<script>
+class SocialShareComponent extends HTMLElement {
+
+    constructor() {
+        super();
+
+        this.root = this.attachShadow({mode: 'open'});
+        this.container = document.createElement('div');
+        this.root.appendChild(this.container);
+
+        switch(this.socialNetwork) {
+            case 'tw':
+                this.container.innerHTML = SocialShareComponent.twTemplate(this.user);
+                break;
+            case 'fb':
+                this.container.innerHTML = SocialShareComponent.fbTemplate(this.user);
+                break;
+        }
+    }
+
+    get socialNetwork() {
+        return this.getAttribute('socialNetwork') || 'tw';
+    }
+
+    set socialNetwork(newValue) {
+        this.setAttribute('socialNetwork', newValue);
+    }
+
+    get user() {
+        return this.getAttribute('user') || 'none';
+    }
+
+    set user(newValue) {
+        this.setAttribute('user', newValue);
+    }
+
+    static twTemplate(user) {
+        return `
+        ${SocialShareComponent.twStyle()}
+        <span class="twitter-button">
+            <a href="https://twitter.com/${user}">
+                Follow @${user}
+            </a>
+        </span>`;
+    }
+
+    static twStyle() {
+        return `
+        <style>
+        a {
+            height: 20px;
+            padding: 3px 6px;
+            background-color: #1b95e0;
+            color: #fff;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 11px;
+            font-family:'Helvetica Neue', Arial, sans-serif;
+            line-height: 18px;
+            text-decoration: none;   
+        }
+
+        a:hover {  background-color: #0c7abf; }
+
+        span {
+            margin: 5px 2px;
+        }
+        </style>`;
+    }
+
+    static fbTemplate(user) {
+        return `
+        ${SocialShareComponent.fbStyle()}
+        <span class="facebook-button">
+            <a href="https://facebook.com/${user}">
+                Follow @${user}
+            </a>
+        </span>`;
+    }
+
+    static fbStyle() {
+        return `
+        <style>
+        a {
+            height: 20px;
+            padding: 3px 6px;
+            background-color: #4267b2;
+            color: #fff;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 11px;
+            font-family:'Helvetica Neue', Arial, sans-serif;
+            line-height: 18px;
+            text-decoration: none;   
+        }
+
+        a:hover {  background-color: #0c7abf; }
+
+        span {
+            margin: 5px 2px;
+        }
+        </style>`;
+    }
+}
+customElements.define('social-share-component', SocialShareComponent);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "apress-simple-form-modal-component",
+  "version": "1.0.1",
+  "description": "<h1 align=\"center\">Welcome to apress-book-web-components 👋</h1> <p>   <img alt=\"Version\" src=\"https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000\" />   <a href=\"https://twitter.com/carlosrojas_o\" target=\"_blank\">     <img alt=\"Twitter: carlosrojas_o\" src=\"https://img.shields.io/twitter/follow/carlosrojas_o.svg?style=social\" />   </a> </p>",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "directories": {
+    "src": "src"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosrojaso/apress-book-web-components.git"
+  },
+  "author": "Carlos Rojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosrojaso/apress-book-web-components/issues"
+  },
+  "homepage": "https://github.com/carlosrojaso/apress-book-web-components#readme"
+}

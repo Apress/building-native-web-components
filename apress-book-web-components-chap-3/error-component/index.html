@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - error-component</title>
+</head>
+<body>
+<div id="parent">
+    <error-component kind="error">
+        This is an error message.
+    </error-component>
+    <error-component kind="warning">
+        This is a warning message.
+    </error-component>
+    <error-component>
+        This is a default message.
+    </error-component>
+</div>
+<script>
+class ErrorComponent extends HTMLElement {
+
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        this.root = this.attachShadow({mode: 'open'});
+        this.templates = document.createElement('div');
+        this.container = document.createElement('div');
+        this.root.appendChild(this.templates);
+        this.root.appendChild(this.container);
+        this.templates.innerHTML = ErrorComponent.template();
+        const kind = this.getAttribute(`kind`) || `none`;
+
+        const template = this.templates.querySelector(`template.${kind}-type`);
+        if (template) {
+            const clone = template.content.cloneNode(true);
+            this.container.innerHTML = '';
+            this.container.appendChild(clone);
+        }
+    }
+
+    static template () {
+        return `
+        <template class="warning-type">
+            <style>
+                .warning {
+                    background-color: yellow;
+                    padding: 15px;
+                    color: black;
+                }
+            </style>
+            <div class="warning">
+                <slot>Error component<slot>
+            </div>
+        </template> 
+        <template class="error-type">
+            <style>
+                .error {
+                    background-color: red;
+                    padding: 15px;
+                    color: black;
+                }
+            </style>
+            <div class="error">
+                <slot>Error component<slot>
+            </div>
+        </template> 
+        <template class="none-type">
+            <style>
+                .none {
+                    background-color: gray;
+                    padding: 15px;
+                    color: black;
+                }
+            </style>
+            <div class="none">
+                <slot>Error component<slot>
+            </div>
+        </template>    
+        `;
+    }
+}
+customElements.define('error-component', ErrorComponent);
+</script>
+</body>
+</html>

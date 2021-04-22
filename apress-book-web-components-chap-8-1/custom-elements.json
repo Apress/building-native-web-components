@@ -1,0 +1,50 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "note-list-component",
+      "path": "./dist/note-list-component.bundled.js",
+      "attributes": [
+        {
+          "name": "notes",
+          "type": "array"
+        }
+      ],
+      "properties": [
+        {
+          "name": "notes",
+          "attribute": "notes",
+          "type": "array"
+        },
+        {
+          "name": "hasUpdated",
+          "type": "number"
+        },
+        {
+          "name": "updateComplete",
+          "type": "Promise<any>"
+        }
+      ]
+    },
+    {
+      "name": "note-list-component",
+      "path": "./note-list-component.js",
+      "description": "A Note List Component",
+      "attributes": [
+        {
+          "name": "notes",
+          "description": "The attribute is an Array of elements.",
+          "type": "array"
+        }
+      ],
+      "properties": [
+        {
+          "name": "notes",
+          "attribute": "notes",
+          "description": "The attribute is an Array of elements.",
+          "type": "array"
+        }
+      ]
+    }
+  ]
+}

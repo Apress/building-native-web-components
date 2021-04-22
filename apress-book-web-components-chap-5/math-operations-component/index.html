@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - math-operations-component</title>
+</head>
+<body>
+<div id="parent">
+    <math-operations-component operation="getCircumference" initialValue="4"></math-operations-component>
+    <math-operations-component operation="getCalcOneYear" initialValue="0.2,100"></math-operations-component>
+    <math-operations-component operation="getLog2"></math-operations-component>
+</div>
+<script type="module">
+import {pi, euler, ln2} from './math-constants.js';
+
+class MathOperationsComponent extends HTMLElement {
+
+    constructor() {
+        super();
+        this.root = this.attachShadow({mode: 'open'});
+        this.container = document.createElement('div');
+        this.root.appendChild(this.container);
+
+        switch(this.getAttribute('operation')) {
+            case 'getCircumference':
+                const radius = this.getAttribute('initialValue');
+                this.container.innerHTML = MathOperationsComponent.getTemplate(this.getCircumference(radius));
+                break;
+            case 'getCalcOneYear':
+                const [interestRate, currentVal] = this.getAttribute('initialValue').split(',');
+                this.container.innerHTML = MathOperationsComponent.getTemplate(this.getCalcOneYear(interestRate, currentVal));
+                break;
+            case 'getLog2':
+                this.container.innerHTML = MathOperationsComponent.getTemplate(this.getLN2());
+            break;
+        }
+    }
+
+    getCircumference(radius) {
+        return 2 * pi * radius;
+    }
+
+    getCalcOneYear(interestRate, currentVal) {
+        return currentVal * (euler ** interestRate);
+    }
+
+    getLN2() {
+        return ln2;
+    }
+
+    static getTemplate(value) {
+        return `
+        ${MathOperationsComponent.getStyle()}
+        <div>
+            ${value}
+        </div>
+        `;
+    }
+
+    static getStyle() {
+        return `
+        <style>
+            div {
+                padding: 5px;
+                background-color: yellow;
+                color; black;
+            }
+        </style>`;
+    }
+}
+customElements.define('math-operations-component', MathOperationsComponent);
+</script>
+</body>
+</html>

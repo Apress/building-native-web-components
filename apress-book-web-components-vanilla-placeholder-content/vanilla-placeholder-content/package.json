@@ -1,0 +1,32 @@
+{
+  "name": "vanilla-placeholder-content",
+  "version": "1.0.0",
+  "description": "Web Component in Vanilla JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx live-server --no-browser --open=/demo",
+    "lint": "semistandard",
+    "package": "npx rimraf package && npm pack | tail -n 1 | xargs tar -xf",
+    "preversion": "npm run lint",
+    "postversion": "git push --follow-tags"
+  },
+  "devDependencies": {
+    "semistandard": "^14.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosrojaso/apress-book-web-components.git"
+  },
+  "keywords": [
+    "vanilla",
+    "web",
+    "component",
+    "JavaScript"
+  ],
+  "author": "Carlos Rojas <ing.carlosandresrojas@pm.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosrojaso/apress-book-web-components/issues"
+  },
+  "homepage": "https://github.com/carlosrojaso/apress-book-web-components#readme"
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - random-paragraph-size-placeholder</title>
+</head>
+<body>
+<div id="parent">
+    <random-paragraph-size-placeholder text="My Personal Text"></random-paragraph-size-placeholder>
+</div>
+<button id="myButton" onclick="removeElement()">Remove Element</button>
+<script>
+class RandomParagraphSizePlaceholder extends HTMLElement {
+
+    constructor() {
+        console.log(`constructor hook`);
+        super();
+        const placeholder = document.createElement('template');
+        const myText = this.getAttribute('text') || 'Loren Ipsum';
+        const randomSize = Math.floor((Math.random() * (50 - 12 + 1)) + 12);
+        placeholder.innerHTML = RandomParagraphSizePlaceholder.template(myText, randomSize);
+
+        this.appendChild(document.importNode(placeholder.content, true));
+    }
+
+    static get observedAttributes() {
+        return ['text'];
+    }
+
+    set text(val) {
+        if (val) {
+            this.setAttribute(`text`, val);
+        } else {
+            this.setAttribute(`text`, ``);
+        }
+    }
+
+    get text() {
+        return this.getAttribute('text');
+    }
+
+    connectedCallback() {
+        console.log(`connectedCallback hook`);
+    }
+    disconnectedCallback() {
+        console.log(`disconnectedCallback hook`);
+    }
+    
+    attributeChangedCallback(attrName, oldVal, newVal) {
+        console.log(`attributeChangedCallback hook`);
+        console.log(`attrName`, attrName);
+        console.log(`oldVal`, oldVal);
+        console.log(`newVal`, newVal);
+    }
+
+    static template (myText, randomSize) {
+        return `
+        <div style="font-size:${randomSize}px">${myText}</div>`;
+    }
+}
+customElements.define('random-paragraph-size-placeholder', RandomParagraphSizePlaceholder);
+
+const element = document.querySelector('random-paragraph-size-placeholder');
+
+function removeElement() {
+    const parentElement = document.getElementById('parent')
+    parentElement.removeChild(element);
+    const myButton = document.getElementById('myButton');
+    myButton.disabled = true;
+}
+</script>
+</body>
+</html>

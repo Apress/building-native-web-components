@@ -1,0 +1,41 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "note-list-item-component",
+      "path": "./note-list-item-component.js",
+      "description": "A Note List Item Component",
+      "attributes": [
+        {
+          "name": "note",
+          "description": "The attribute is an Object.",
+          "type": "object"
+        },
+        {
+          "name": "idx",
+          "description": "The attribute is a number.",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "note",
+          "attribute": "note",
+          "description": "The attribute is an Object.",
+          "type": "object"
+        },
+        {
+          "name": "idx",
+          "attribute": "idx",
+          "description": "The attribute is a number.",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "del-event"
+        }
+      ]
+    }
+  ]
+}

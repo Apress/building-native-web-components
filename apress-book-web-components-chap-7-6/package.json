@@ -1,0 +1,37 @@
+{
+  "name": "apress-simple-form-modal-component",
+  "version": "1.0.4",
+  "description": "Simple Form Modal Component",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "directories": {
+    "src": "src"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack --mode production",
+    "cpdir": "copyfiles -V \"./dist/*.js\" \"./example\"",
+    "start": "npm run build && npm run cpdir && serve example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosrojaso/apress-book-web-components.git"
+  },
+  "author": "Carlos Rojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosrojaso/apress-book-web-components/issues"
+  },
+  "homepage": "https://github.com/carlosrojaso/apress-book-web-components#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "copyfiles": "^2.3.0",
+    "path": "^0.12.7",
+    "rimraf": "^3.0.2",
+    "serve": "^11.3.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

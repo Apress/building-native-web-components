@@ -1,0 +1,15 @@
+{
+  "name": "math-operations-component",
+  "version": "1.0.0",
+  "description": "Simple component to use import",
+  "main": "math-constants.js",
+  "scripts": {
+    "start": "serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>&lt;simple-form-modal-component> Demo</title>
+    <script type="module" src="../simple-form-modal-component.js"></script>
+  </head>
+  <body>
+    <button id="myBtn">Open Modal</button>
+    <simple-form-modal-component></simple-form-modal-component>
+    <script>
+      const myBtn = document.getElementById('myBtn');
+      const formModal = document.querySelector('simple-form-modal-component');
+      myBtn.addEventListener('click', function() {
+        formModal.open = !formModal.open;
+      });
+      formModal.addEventListener('addEvent', function(e) {
+        console.log("Event:", e.detail);
+      });
+    </script>
+  </body>
+</html>
